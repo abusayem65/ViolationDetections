@@ -70,6 +70,7 @@ This module allows developers, IoT edge devices (like Jetson Nano), or external 
 2. Navigate directly to the API container directory:
     ```bash
     cd illegal-bus-stoppage-detection/src/api
+    pip install -r requirements.txt
     ```
 
 3. Initialize the ASGI server instance:
