@@ -11,33 +11,80 @@ The primary goal of this project is to identify whether a bus is stopping within
 - **Primary Classes:** Bus, Bus Stop, Shelter, Seating, Trash Can.
 - **Input:** Images and Video Streams.
 
----
+# 🖥️ Local Model Testing via Web Interface
 
 1. **Clone the repository**
     ```bash
-    git clone https://github.com/jahidul17/Data-Science.git
+    git clone https://github.com/thezahidul/ViolationDetections.git
+    cd ViolationDetections/
     ```
 
-2. **Create and activate a virtual environment:**
+2. **Create a virtual environment:**
     ```bash
     python -m venv venv
-    # On Windows
-    venv\Scripts\activate
-    # On macOS/Linux
-    source venv/bin/activate
     ```
 
-3. **Install dependencies**
+3. **Activate the virtual environment:**
+    * **On Windows (Command Prompt):**
+      ```cmd
+      venv\Scripts\activate
+      ```
+    * **On Windows (PowerShell):**
+      ```powershell
+      .\venv\Scripts\activate
+      ```
+    * **On macOS/Linux:**
+      ```bash
+      source venv/bin/activate
+      ```
+
+4. **Install dependencies**
     ```bash
-    pip install ultralytics opencv-python
+    # Navigate to the inner core project directory
+    cd illegal-bus-stoppage-detection/
+    
+    # [Linux/Ubuntu Users Only] Run this if you face folder permission issues:
+    # sudo chown -R $USER:$USER ../venv
+    
+    # Install the required software ecosystem
+    pip install -r requirements.txt
     ```
 
-
-4. **Run Detection**
-   Place your test images in the data/ folder and execute:
+5. **Run Detection (Streamlit App Interface)**
+    Place your test validation frames or images in the `data/` folder and execute:
     ```bash
-    python detect.py
+    streamlit run src/app.py
     ```
+    *Open your web browser and navigate to the local host address:* `http://localhost:8501`
+
+
+# 🔌 Production API Testing Guidelines (FastAPI backend)
+
+This module allows developers, IoT edge devices (like Jetson Nano), or external systems to send physical parameters (bus speed) and image streams to verify traffic infractions programmatically.
+
+---
+
+## 🛠️ Launching the API Server
+
+1. Ensure your virtual environment is activated (see setup instructions above).
+2. Navigate directly to the API container directory:
+    ```bash
+    cd illegal-bus-stoppage-detection/src/api
+    ```
+
+3. Initialize the ASGI server instance:
+    * **Standard Cross-Platform Command:**
+      ```bash
+      python -m uvicorn main:app --reload
+      ```
+    * **Alternative (Linux/macOS):**
+      ```bash
+      python3 -m uvicorn main:app --reload
+      ```
+
+Expected terminal output confirmation:
+
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
     
 ## 📊 Dataset & Results
 #### 📂 Dataset (1,100+ Images)
